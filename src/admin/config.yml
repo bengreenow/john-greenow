@@ -30,6 +30,7 @@ collections:
             multiple: true
             create: true
             options: ["draft"]
+            required: false
     - label: "Settings"
       name: "settings"
       editor:
