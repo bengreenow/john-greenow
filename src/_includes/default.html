@@ -6,7 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{{title}}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="stylesheet" href="/static/css/glide.core.min.css" />
+        {% if glide %}
+        <script src="static/js/glide.min.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        {% endif %}
         <link
             href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap"
             rel="stylesheet"
@@ -37,6 +41,6 @@
             type="text/javascript"
             src="https://identity.netlify.com/v1/netlify-identity-widget.js"
         ></script>
-        {% endif %}
+        {% endif %} {% block js %}{% endblock %}
     </body>
 </html>

@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*Your Custom CSS Goes here*/
-
 h1,
 h2,
 h3 {
@@ -12,6 +10,10 @@ h3 {
 
 .big-text {
     @apply xl:text-8xl lg:text-6xl md:text-6xl sm:text-5xl text-4xl;
+}
+
+.w-double {
+    width: 200%;
 }
 
 .display::after {

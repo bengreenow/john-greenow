@@ -2,6 +2,7 @@
 layout: default
 title: John Greenow
 path: home
+glide: true
 ---
 
 <div class="container mx-auto flex flex-col justify-center items-center">
@@ -37,18 +38,22 @@ path: home
         </header>
     </div>
 </div>
-{% if not quotes %}
-<div class="w-full bg-gray-900 flex flex-auto p-4 my-6 justify-center">
-    {% for testimonial in quotes.items %}
-    <blockquote
-        class="p-5 md:m-3 m-1 border-purple-500 border-2 rounded max-w-md"
-    >
-        <p class="max-w-prose">{{testimonial.quote}}</p>
-        <p class="font-display text-center italic text-gray-400">
-            {{testimonial.name}}
-        </p>
-    </blockquote>
-    {% endfor %}
+{% if quotes %}
+<div class="w-full bg-gray-900 flex p-4 my-6 overflow-hidden relative">
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides flex items-center">
+                {% for testimonial in quotes.items %}
+                <li class="glide__slide p-5 md:m-3">
+                    <p class="max-w-prose">{{testimonial.quote}}</p>
+                    <p class="font-display text-center italic text-gray-400">
+                        {{testimonial.name}}
+                    </p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </div>
 {% endif %}
 
@@ -61,3 +66,16 @@ path: home
         soluta.
     </div>
 </div>
+
+<script>
+    new Glide(".glide", {
+        gap: 100,
+        type: "carousel",
+        perView: 4,
+        focusAt: "center",
+        autoplay: 3000,
+        animationDuration: 1000,
+        throttle: true,
+        breakpoints: { 600: { perView: 1 }, 1200: { perView: 3 } },
+    }).mount();
+</script>

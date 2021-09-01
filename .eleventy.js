@@ -34,6 +34,10 @@ module.exports = function (eleventyConfig) {
             "./static/js/alpine_screen.js",
         "./node_modules/prismjs/themes/prism-tomorrow.css":
             "./static/css/prism-tomorrow.css",
+        "./node_modules/@glidejs/glide/dist/css/glide.core.min.css":
+            "./static/css/glide.core.min.css",
+        "./node_modules/@glidejs/glide/dist/glide.min.js":
+            "./static/js/glide.min.js",
     });
 
     // Copy Image Folder to /_site
