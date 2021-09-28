@@ -3,82 +3,153 @@ layout: default
 
 title: John Greenow
 path: home
-glide: true
 ---
 
-<div class="container mx-auto flex flex-col justify-center items-center">
-    <div class="max-w-screen-xl">
-        <header class="grid grid-flow-row grid-cols-2 gap-4 p-4">
-            <img
-                src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                alt="john"
-                class="col-span-2 sm:col-span-1"
-            />
-            <div
-                class="
-                    transform
-                    col-span-2
-                    sm:col-span-1
-                    md:-translate-x-24
-                    -translate-y-8
-                    my-auto
-                "
-            >
-                <h1 class="display big-text font-bold">
-                    Coaching, Communication, Connection
-                </h1>
-                <p class="max-w-prose pt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Obcaecati, officia! Odit voluptate minima asperiores dolorem
-                    dignissimos optio impedit tempora sed magni recusandae.
-                    Numquam, consectetur vel? Corrupti, aliquid repudiandae quae
-                    adipisci <a>beatae exercitationem</a>, enim, minima ullam
-                    fugiat hic praesentium nostrum tenetur!
-                </p>
-            </div>
-        </header>
+<div class="m-3 flex flex-col items-center justify-center min-h-screen">
+    <div class="flex flex-col items-center">
+        <h1 class="display big-text">Website under construction.</h1>
+        <a class="leading-8" href="mailto:john.greenow@gmail.com">Get In touch</a>
     </div>
 </div>
-{% if quotes %}
-<div class="w-full bg-gray-900 flex p-4 my-6 overflow-hidden relative">
-    <div class="glide">
-        <div class="glide__track" data-glide-el="track">
-            <ul class="glide__slides flex items-center">
-                {% for testimonial in quotes.items %}
-                <li class="glide__slide p-5 md:m-3">
-                    <p class="max-w-prose">{{testimonial.quote}}</p>
-                    <p class="font-display text-center italic text-gray-400">
-                        {{testimonial.name}}
-                    </p>
-                </li>
-                {% endfor %}
+<style>.context {
+    width: 100%;
+    position: absolute;
+    top:50vh;
+    
+}
+
+.context h1{
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+}
+
+.circles{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}</style>
+<div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
             </ul>
-        </div>
-    </div>
-</div>
-{% endif %}
-
-<div class="container mx-auto flex flex-col justify-center items-center my-4">
-    <h1 class="lg:text-6xl md:text-6xl sm:text-5xl text-4xl">
-        The latest from John
-    </h1>
-    <div class="bg-gray-500 flex flex-1">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-        soluta.
-    </div>
-</div>
-
-{% include "./_includes/partials/contact-form.html" %}
-
-<script>
-    new Glide(".glide", {
-        gap: 100,
-        type: "carousel",
-        perView: 4,
-        focusAt: "center",
-        autoplay: 5000,
-        animationDuration: 1000,
-        throttle: true,
-        breakpoints: { 600: { perView: 1 }, 1200: { perView: 3 } },
-    }).mount();
-</script>
+    </div >
