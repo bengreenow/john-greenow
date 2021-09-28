@@ -1,18 +1,4 @@
----
 items:
-    - name: "John Smith"
-      quote: "lorem ipsum"
-    - name: "Ben Greenow"
-      quote: "This website is absolutely stunning"
-    - name: "John Smith"
-      quote: "sakdgopsjdkfaogpsjdgopsdjgiosadjgioasdj giosd iodsa hguisahguisd hgupiag hupaishuoisa huipasdhguisdh guisahju asduijg sdaugi hagsuhsadu hgaspudgh sduoipghsaup gshdguihs auphsa ugips dhgupsdh p"
-    - name: "John Smith"
-      quote: "lorem ipsum"
-    - name: "John Smith"
-      quote: "lorem ipsum"
-    - name: "John Smith"
-      quote: "lorem ipsum"
-    - name: "John Smith"
-      quote: "lorem ipsum"
-    - name: "John Smith"
-      quote: "lorem ipsum"
+  - quote: John is a great communicator and human being, I would trust this man with
+      my life
+    name: God Himself
