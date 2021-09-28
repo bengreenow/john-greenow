@@ -37,7 +37,7 @@ collections:
           preview: true
       files:
           - label: "Navigation"
-            name: "items"
+            name: "nav"
             file: "src/_data/navigation.yaml"
             fields:
                 - label: Nav Items
@@ -48,18 +48,28 @@ collections:
                   fields:
                       - { label: Title, name: text, widget: string }
                       - { label: URL, name: url, widget: string }
-          - label: "Quick Links"
-            name: "links"
-            file: "src/_data/quicklinks.yaml"
+          - label: "Tesimonials"
+            name: "testimonials"
+            file: "src/_data/quotes.yaml"
             fields:
-                - label: Nav Items
+                - label: Testimonials
+                  name: items
+                  widget: list
+                  collapsed: true
+                  fields:
+                      - { label: Quote, name: quote, widget: string }
+                      - { label: Name, name: name, widget: string }
+          - label: "Social Links"
+            name: "socials"
+            file: "src/_data/socials.yaml"
+            fields:
+                - label: Socials
                   name: links
                   widget: list
                   collapsed: false
                   fields:
-                      - { label: Title, name: title, widget: string }
+                      - { label: Social Media Name, name: name, widget: string }
                       - { label: URL, name: url, widget: string }
-                      - { label: Description, name: desc, widget: string }
           - label: "Meta Settings"
             name: "settings"
             file: "src/_data/settings.yaml"
@@ -67,3 +77,4 @@ collections:
                 - { label: Name, name: name, widget: string }
                 - { label: Author, name: author, widget: string }
                 - { label: URL, name: url, widget: string }
+                

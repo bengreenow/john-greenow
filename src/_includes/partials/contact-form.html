@@ -1,13 +1,62 @@
-<div class="container">
-    <form id="contact-form" method="POST" netlify>
-        <input type="text" class="rounded bg-gray-400" name="test" />
-        <input type="text" class="rounded bg-gray-400" name="test2" />
-        <input type="text" class="rounded bg-gray-400" name="test3" />
-        <input
-            type="submit"
-            id="contact-form-submit-button"
-            class="p-3 shadow-sm"
-            value="submit"
-        />
+<h1 class="big-text text-center">Get in touch</h1>
+<div class="flex -mx-2">
+    <form
+        id="contact-form"
+        class="w-full max-w-lg m-auto"
+        method="POST"
+        netlify
+    >
+        <div class="bg-black rounded-sm shadow-sm flex flex-wrap mx-auto">
+            <div class="w-full md:w-1/2 p-2">
+                <label for="first-name font-bold" class="mb-1 block"
+                    >Name</label
+                >
+                <input
+                    type="name"
+                    class="p-2 bg-gray-800 w-full"
+                    name="test"
+                    id="first-name"
+                    block
+                    w-full
+                />
+            </div>
+            <div class="w-full md:w-1/2 p-2">
+                <label for="email font-bold" class="mb-1 block">Email</label>
+                <input
+                    type="email"
+                    class="p-2 bg-gray-800 w-full"
+                    name="test"
+                    id="email"
+                    block
+                    w-full
+                />
+            </div>
+            <div class="w-full p-2">
+                <label for="comment font-bold" class="mb-1 block"
+                    >Comment</label
+                >
+                <textarea
+                    type="textarea"
+                    class="p-2 bg-gray-800 w-full focus:border-transparent"
+                    name="test"
+                    id="email"
+                    block
+                    w-full
+                ></textarea>
+            </div>
+            <div class="w-full md:w-1/2 p-2">
+                <input
+                    type="submit"
+                    class="
+                        p-3
+                        bg-gray-800
+                        text-white
+                        hover:bg-purple-500
+                        transition-colors
+                    "
+                    value="Submit"
+                />
+            </div>
+        </div>
     </form>
 </div>

@@ -44,7 +44,7 @@ glide: true
     <div class="glide">
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides flex items-center">
-                {% for testimonial in quotes.items %}
+                {% for testimonial in quotes.quotes %}
                 <li class="glide__slide p-5 md:m-3">
                     <p class="max-w-prose">{{testimonial.quote}}</p>
                     <p class="font-display text-center italic text-gray-400">
