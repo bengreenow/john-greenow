@@ -39,7 +39,7 @@ glide: true
     </div>
 </div>
 {% if quotes %}
-<div class="w-full bg-gray-900 flex p-4 my-6 overflow-hidden relative">
+<div class="w-full bg-gray-900 flex p-4 overflow-hidden relative">
     <div class="glide">
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides flex items-center">
@@ -50,22 +50,16 @@ glide: true
                         {{testimonial.name}}
                     </p>
                 </li>
-                {% endfor %}
+                 {% endfor %}
             </ul>
         </div>
     </div>
 </div>
 {% endif %}
 
-<div class="container mx-auto flex flex-col justify-center items-center my-4">
-    <h1 class="lg:text-6xl md:text-6xl sm:text-5xl text-4xl">
-        The latest from John
-    </h1>
-    <div class="bg-gray-500 flex flex-1">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-        soluta.
-    </div>
-</div>
+{% include "./_includes/partials/eqi-hero.html" %}
+
+{% include "./_includes/partials/latest-blog.html" %}
 
 {% include "./_includes/partials/contact-form.html" %}
 

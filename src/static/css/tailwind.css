@@ -40,6 +40,15 @@ html {
     @apply text-white bg-black;
 }
 
+body {
+    min-height: 100vh;
+    @apply flex flex-col
+}
+
+footer {
+    margin-top: auto;
+}
+
 /* Syntax Highlighting*/
 
 body :not(pre) > code[class*="language-"],

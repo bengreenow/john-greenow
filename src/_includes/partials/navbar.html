@@ -1,23 +1,25 @@
-<div class="{{ 'lg:sticky' if path == 'home' }} w-full">
+<div class="{{ 'lg:sticky' if path == 'home' }} sticky top-0 z-50 bg-black w-full"
+    x-data="{ isOpen: false }"
+    @keydown.escape="isOpen = false"
+>
     <nav
         class="
             flex
             items-center
             justify-center
             lg:justify-between
-            flex-wrap
+            flex-row
+            flex-nowrap
             p-6
             lg:px-0
             container
             mx-auto
             font-display
         "
-        x-data="{ isOpen: false }"
-        @keydown.escape="isOpen = false"
     >
         <!--Logo etc-->
         <div class="flex items-center">
-            <div class="w-auto h-auto">
+            <div class="">
                 <a href="/">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +93,7 @@
 
             <ul
                 class="
-                    pt-6
+                    pb-3
                     lg:pt-0
                     list-reset
                     lg:flex
