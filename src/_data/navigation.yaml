@@ -1,6 +1,6 @@
 items:
   - text: Bio
-    url: "#"
+    url: "/#bio"
   - text: Blog
     url: /blog
   - text: Contact
