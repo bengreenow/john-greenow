@@ -6,30 +6,35 @@ path: home
 glide: true
 ---
 
-<div class="container mx-auto flex flex-col justify-center items-center">
+<div
+    class="container mx-auto flex flex-col justify-center items-center md:my-8"
+>
     <div class="max-w-screen-xl">
-        <header class="flex p-4 flex-col lg:flex-row">
-            <img
-                src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                alt="john"
-                class=""
-            />
+        <header
+            class="flex p-4 flex-col lg:flex-row justify-center items-center"
+        >
+            <div>
+                <img src="static/img/john.jpeg" alt="john" class="block" />
+            </div>
             <div
                 class="
                     transform
-                    col-span-2
-                    lg:-translate-x-24
+                    lg:-translate-x-24 lg:-translate-y-0
                     -translate-y-8
                     my-auto
+                    bg-black
+                    py-2
+                    lg:p-4
                 "
             >
                 <h1 class="display big-text font-bold break-words">
                     Coaching, Communication, Connection
                 </h1>
                 <p class="max-w-prose pt-2 text-xl">
-                    With over 30 years of experience in pastoring, preaching and leadership, John is passionate about finding people their purpose in life.
-                    <br>
-                    
+                    With over 30 years of experience in pastoring, preaching and
+                    leadership, John is passionate about finding people their
+                    purpose in life.
+                    <br />
                 </p>
             </div>
         </header>
@@ -47,17 +52,30 @@ glide: true
                         {{testimonial.name}}
                     </p>
                 </li>
-                 {% endfor %}
+                {% endfor %}
             </ul>
         </div>
     </div>
 </div>
-{% endif %}
+{% endif %} {% include "./_includes/partials/eqi-hero.html" %}
 
-{% include "./_includes/partials/eqi-hero.html" %}
-
-<div class="w-full flex my-10 py-14 overflow-hidden relative justify-center bg-gray-900">
-    <blockquote class="text-left md:text-center text-xl max-w-prose px-4">“I have had the privilege of speaking in many church settings around the world, and I believe I can help encourage and equip you to maximise your effectiveness“ </blockquote>
+<div
+    class="
+        w-full
+        flex
+        my-10
+        py-14
+        overflow-hidden
+        relative
+        justify-center
+        bg-gray-900
+    "
+>
+    <blockquote class="text-left md:text-center text-xl max-w-prose px-4">
+        “I have had the privilege of speaking in many church settings around the
+        world, and I believe I can help encourage and equip you to maximise your
+        effectiveness“
+    </blockquote>
 </div>
 
 {% include "./_includes/partials/contact-form.html" %}

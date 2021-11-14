@@ -1,4 +1,5 @@
-<div class="{{ 'lg:sticky' if path == 'home' }} sticky top-0 z-50 bg-black w-full"
+<div
+    class="{{ 'lg:sticky' if path == 'home' }} sticky top-0 z-50 bg-black w-full"
     x-data="{ isOpen: false }"
     @keydown.escape="isOpen = false"
 >
@@ -8,9 +9,9 @@
             items-center
             justify-center
             lg:justify-between
-            flex-row
-            flex-nowrap
-            p-6
+            flex-row flex-nowrap
+            px-6
+            py-3
             lg:px-0
             container
             mx-auto
@@ -23,7 +24,7 @@
                 <a href="/">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="w-60"
+                        class="lg:w-60 w-32"
                         viewBox="0 0 372 117"
                     >
                         <text

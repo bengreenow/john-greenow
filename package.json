@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
     "alpine-magic-helpers": "^1.2.2",
     "autoprefixer": "^10.1.0",
     "postcss": "^8.2.1"
