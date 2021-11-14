@@ -1,7 +1,5 @@
 items:
   - text: Bio
     url: "#"
-  - text: Blog
-    url: /blog
   - text: Contact
     url: "#contact"
