@@ -44,7 +44,7 @@
         </div>
 
         <!--Toggle button (hidden on large screens)-->
-        <button
+        {# <button
             @click="isOpen = !isOpen"
             type="button"
             class="
@@ -76,10 +76,10 @@
                     d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
                 />
             </svg>
-        </button>
+        </button> #}
 
         <!--Menu-->
-        <div
+        {# <div
             class="
                 w-full
                 flex-grow
@@ -89,15 +89,15 @@
             :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }"
             @click.away="isOpen = false"
             x-show.transition="true"
-        >
+        > #}
             {% if navigation.items %}
 
             <ul
                 class="
                     pb-3
-                    lg:pt-0
+                    pt-0
                     list-reset
-                    lg:flex
+                    flex
                     justify-end
                     flex-1
                     items-center
@@ -125,6 +125,6 @@
             </ul>
 
             {% endif %}
-        </div>
+        {# </div> #}
     </nav>
 </div>
