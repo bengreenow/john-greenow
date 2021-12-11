@@ -57,7 +57,7 @@ collections:
                   widget: list
                   collapsed: true
                   fields:
-                      - { label: Quote, name: quote, widget: string }
+                      - { label: Quote, name: quote, widget: text }
                       - { label: Name, name: name, widget: string }
                       - { label: Position, name: position, widget: string }
           - label: "Social Links"
