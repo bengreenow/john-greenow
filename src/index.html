@@ -48,8 +48,19 @@ glide: true
                 {% for testimonial in quotes.items %}
                 <li class="glide__slide p-5 md:m-3">
                     <p class="max-w-prose">{{testimonial.quote}}</p>
-                    <p class="font-display text-center italic text-gray-400">
+                    <p
+                        class="
+                            font-display
+                            text-left
+                            font-bold
+                            text-gray-200
+                            mt-2
+                        "
+                    >
                         {{testimonial.name}}
+                    </p>
+                    <p class="font-display text-left italic text-gray-400">
+                        {{testimonial.title}}
                     </p>
                 </li>
                 {% endfor %}
@@ -84,11 +95,11 @@ glide: true
     new Glide(".glide", {
         gap: 100,
         type: "carousel",
-        perView: 4,
+        perView: 3,
         focusAt: "center",
         autoplay: 5000,
         animationDuration: 1000,
         throttle: true,
-        breakpoints: { 600: { perView: 1 }, 1200: { perView: 3 } },
+        breakpoints: { 600: { perView: 1 }, 1200: { perView: 2 } },
     }).mount();
 </script>

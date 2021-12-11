@@ -59,6 +59,7 @@ collections:
                   fields:
                       - { label: Quote, name: quote, widget: string }
                       - { label: Name, name: name, widget: string }
+                      - { label: Position, name: position, widget: string }
           - label: "Social Links"
             name: "socials"
             file: "src/_data/socials.yaml"
