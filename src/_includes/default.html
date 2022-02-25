@@ -8,6 +8,22 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="stylesheet" href="/static/css/glide.core.min.css" />
         <link rel="stylesheet" href="https://use.typekit.net/doq8afn.css" />
+        <script>
+            window.onload = function WindowLoad(event) {
+                var replacers = document.querySelectorAll("[data-replace]");
+                console.log(replacers);
+                for (var i = 0; i < replacers.length; i++) {
+                    let replaceClasses = JSON.parse(
+                        replacers[i].dataset.replace.replace(/'/g, '"')
+                    );
+                    Object.keys(replaceClasses).forEach(function (key) {
+                        replacers[i].classList.remove(key);
+                        replacers[i].classList.add(replaceClasses[key]);
+                    });
+                }
+            };
+        </script>
+
         {% if glide %}
         <script src="static/js/glide.min.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

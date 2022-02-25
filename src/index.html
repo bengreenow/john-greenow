@@ -14,26 +14,26 @@ glide: true
             class="flex p-4 flex-col lg:flex-row justify-center items-center"
         >
             <div>
-                <img src="static/img/john2.jpg" alt="John Greenow" class="block" />
+                <img
+                    src="static/img/john2.jpg"
+                    alt="John Greenow"
+                    class="block"
+                />
             </div>
             <div
-                class="
-                    transform
-                    lg:-translate-x-24 lg:-translate-y-0
-                    -translate-y-8
-                    my-auto
-                    bg-black
-                    py-2
-                    lg:p-4
-                "
+                class="transform transition duration-1000 lg:-translate-x-60 lg:-translate-y-0 -translate-y-8 my-auto bg-black py-2 lg:p-4 opacity-0 delay-100"
+                data-replace="{ 'opacity-0': 'opacity-100', 'lg:-translate-x-60': 'lg:-translate-x-24' }"
             >
-                <h1 class="display big-text font-bold break-words">
+                <h1
+                    class="display transition transform duration-1000 lg:translate-x-24 big-text font-bold break-words opacity-0 delay-200"
+                    data-replace="{ 'opacity-0': 'opacity-100', 'lg:translate-x-24': 'lg:translate-x-0' }"
+                >
                     Coaching, Communication, Connection
                 </h1>
                 <p class="max-w-prose pt-2 text-lg">
                     With over 30 years of experience in pastoring, preaching and
-                    leadership, John is passionate about helping people find their
-                    purpose in life.
+                    leadership, John is passionate about helping people find
+                    their purpose in life.
                     <br />
                 </p>
             </div>
@@ -49,17 +49,13 @@ glide: true
                 <li class="glide__slide p-5 md:m-3">
                     <p class="max-w-prose">{{testimonial.quote}}</p>
                     <p
-                        class="
-                            font-display
-                            text-left
-                            font-bold
-                            text-gray-200
-                            mt-2
-                        "
+                        class="font-display text-left font-bold text-gray-200 mt-2"
                     >
                         {{testimonial.name}}
                     </p>
-                    <p class="font-display text-left italic text-gray-400 text-sm max-w-xs">
+                    <p
+                        class="font-display text-left italic text-gray-400 text-sm max-w-xs"
+                    >
                         {{testimonial.position}}
                     </p>
                 </li>
@@ -71,16 +67,7 @@ glide: true
 {% endif %} {% include "./_includes/partials/eqi-hero.html" %}
 
 <div
-    class="
-        w-full
-        flex
-        my-10
-        py-14
-        overflow-hidden
-        relative
-        justify-center
-        bg-gray-900
-    "
+    class="w-full flex my-10 py-14 overflow-hidden relative justify-center bg-gray-900"
 >
     <blockquote class="text-left md:text-left text-xl max-w-prose px-4">
         “I have had the privilege of speaking in many church settings around the
