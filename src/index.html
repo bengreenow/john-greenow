@@ -17,20 +17,24 @@ glide: true
                 <img
                     src="static/img/john2.jpg"
                     alt="John Greenow"
-                    class="block"
+                    class="block opacity-0 transition duration-1000"
+                    data-replace="{ 'opacity-0': 'opacity-100', 'lg:-translate-x-60': 'lg:-translate-x-24' }"
                 />
             </div>
             <div
-                class="transform transition duration-1000 lg:-translate-x-60 lg:-translate-y-0 -translate-y-8 my-auto bg-black py-2 lg:p-4 opacity-0 delay-100"
+                class="transform transition duration-1000 lg:-translate-x-60 lg:-translate-y-0 -translate-y-8 my-auto bg-black py-2 lg:p-4 opacity-0 delay-300"
                 data-replace="{ 'opacity-0': 'opacity-100', 'lg:-translate-x-60': 'lg:-translate-x-24' }"
             >
                 <h1
-                    class="display transition transform duration-1000 lg:translate-x-24 big-text font-bold break-words opacity-0 delay-200"
-                    data-replace="{ 'opacity-0': 'opacity-100', 'lg:translate-x-24': 'lg:translate-x-0' }"
+                    class="display transition transform duration-1000 lg:-translate-x-24 big-text font-bold break-words opacity-0 delay-700"
+                    data-replace="{ 'opacity-0': 'opacity-100', 'lg:-translate-x-24': 'lg:translate-x-0' }"
                 >
                     Coaching, Communication, Connection
                 </h1>
-                <p class="max-w-prose pt-2 text-lg">
+                <p
+                    class="max-w-prose pt-2 text-lg transition transform duration-1000 opacity-0 lg:-translate-x-24 delay-1000"
+                    data-replace="{ 'opacity-0': 'opacity-100', 'lg:-translate-x-24': 'lg:translate-x-0' }"
+                >
                     With over 30 years of experience in pastoring, preaching and
                     leadership, John is passionate about helping people find
                     their purpose in life.
