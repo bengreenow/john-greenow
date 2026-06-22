@@ -1,11 +1,13 @@
+.astro/
+dist/
 _site/
 _tmp/
 .DS_Store
 node_modules/
 .vscode/
-_site/
 *git/
 package-lock.json
+yarn.lock
 .env
 # Local Netlify folder
 .netlify
