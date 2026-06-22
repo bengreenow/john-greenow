@@ -1,0 +1,25 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { formatDate } from "../lib/formatDate";
+
+interface Props {
+  title: string;
+  date: Date;
+}
+
+const { title, date } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <div class="container max-w-4xl prose-purple mt-6 px-6">
+    <div class="pb-5">
+      <h1 class="font-bold text-7xl">{title}</h1>
+      <p class="text-left text-base leading-6 font-medium text-gray-500">
+        <time>{formatDate(date)}</time>
+      </p>
+    </div>
+    <article class="prose prose-invert prose-dark lg:prose-xl my-4 mx-auto">
+      <slot />
+    </article>
+  </div>
+</BaseLayout>

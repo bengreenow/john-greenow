@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3 {
+  @apply font-display;
+}
+
+.big-text {
+  @apply xl:text-8xl lg:text-6xl md:text-6xl sm:text-5xl text-4xl;
+}
+
+.w-double {
+  width: 200%;
+}
+
+.display::after {
+  content: "";
+  display: block;
+  position: absoulte;
+  width: 100%;
+  left: 200px;
+  height: 2px;
+  @apply bg-purple-500;
+}
+
+a {
+  @apply text-purple-500;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+a:hover {
+  @apply text-purple-300;
+  transition: color 0.2s;
+}
+
+html {
+  @apply text-white bg-black;
+}
+
+body {
+  min-height: 100vh;
+  @apply flex flex-col;
+}
+
+footer {
+  margin-top: auto;
+}
+
+body :not(pre) > code[class*="language-"],
+body pre[class*="language-"] {
+  @apply bg-gray-800;
+}

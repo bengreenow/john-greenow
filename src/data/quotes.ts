@@ -1,0 +1,36 @@
+export type Quote = {
+  quote: string;
+  name: string;
+  position: string;
+};
+
+export const quotes: { items: Quote[] } = {
+  items: [
+    {
+      quote:
+        "John is no novice at Coaching, Communication and Connecting.  He has spent over 30 years doing this.  He is very personable, insightful and resourceful. Spending time with him will prove invaluable for those who want to access the vault of his Wisdom, Experience and his ability to bring clarity.",
+      name: "Ian Green",
+      position: " CEO of Global Transformations",
+    },
+    {
+      quote:
+        "John Greenow is a leader with a wealth of experience gained from pastoring a large church in the north of England. He has also successfully completed one of Europe's finest and most ambitious church building projects of the last few decades. He is an experienced and qualified coach who can help you and your church develop and grow. John is also a quality speaker and communicator whose gift can breathe life into your church community.",
+      name: "Paul Benger",
+      position:
+        "Lead pastor, IKON Church and Leader of the Ground Level Network of Churches",
+    },
+    {
+      quote:
+        "I have known John for 40 years, and have observed him spend his whole life diligently caring for, encouraging and equipping those around him. I unreservedly recommend him as a conduit of wisdom, as a person, communicator and coach.",
+      name: "Steve Mawston",
+      position: "Pastor, SOUL Church UK",
+    },
+    {
+      quote:
+        "When looking for practical wisdom, you don't need a theorist but a practitioner. And that is what John is. His years of following Jesus and commitment to building the local church are his living letter of endorsement.",
+      name: "Stephen Matthew",
+      position:
+        "Author, Speaker, Church Consultant and Principal of the Building Church Academy ",
+    },
+  ],
+};

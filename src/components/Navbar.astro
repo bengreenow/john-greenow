@@ -1,0 +1,57 @@
+---
+import { navigation } from "../data/navigation";
+
+interface Props {
+  path?: string;
+}
+
+const { path } = Astro.props;
+const stickyClass = path === "home" ? "lg:sticky" : "";
+---
+
+<div class={`${stickyClass} sticky top-0 z-50 bg-black w-full`}>
+  <nav
+    class="flex items-center justify-center lg:justify-between flex-row flex-nowrap px-6 py-3 lg:px-0 container mx-auto font-display"
+  >
+    <div class="flex items-center">
+      <div>
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="lg:w-60 w-32"
+            viewBox="0 0 372 117"
+          >
+            <text
+              id="John_Greenow"
+              data-name="John Greenow"
+              transform="translate(0 70)"
+              fill="#fff"
+              font-size="84"
+              font-family="Professor"
+              letter-spacing="-0.091em"
+            >
+              <tspan x="0" y="0">John Greenow</tspan>
+            </text>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    {
+      navigation.items.length > 0 && (
+        <ul class="pb-3 pt-0 list-reset flex justify-end flex-1 items-center">
+          {navigation.items.map((item) => (
+            <li class="nav__item mr-3">
+              <a
+                class="inline-block text-white no-underline hover:text-indigo-500 text-xl font-bold py-2 px-6"
+                href={item.url}
+              >
+                {item.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </nav>
+</div>
