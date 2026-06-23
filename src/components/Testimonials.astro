@@ -10,40 +10,38 @@ const { items } = Astro.props;
 
 {
   items.length > 0 && (
-    <div class="w-full bg-gray-900 flex p-4 overflow-hidden relative">
-      <div class="glide">
-        <div class="glide__track" data-glide-el="track">
-          <ul class="glide__slides flex items-center">
-            {items.map((testimonial) => (
-              <li class="glide__slide p-5 md:m-3">
-                <p class="max-w-prose">{testimonial.quote}</p>
-                <p class="font-display text-left font-bold text-gray-200 mt-2">
-                  {testimonial.name}
-                </p>
-                <p class="font-display text-left italic text-gray-400 text-sm max-w-xs">
-                  {testimonial.position}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <section class="py-10 sm:py-16 md:py-20" data-fade>
+      <div class="container">
+        <h2 class="section-heading text-2xl sm:text-3xl md:text-4xl mb-8 sm:mb-10">What leaders say</h2>
+
+        <ul class="max-w-3xl flex flex-col gap-8 sm:gap-12">
+          {items.map((testimonial) => (
+            <li class="flex gap-4 sm:gap-6">
+              {testimonial.image && (
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  width="80"
+                  height="80"
+                  class="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-full object-cover object-top"
+                  loading="lazy"
+                />
+              )}
+              <figure>
+                <blockquote class="text-base sm:text-lg text-ink leading-relaxed">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </blockquote>
+                <figcaption class="mt-4">
+                  <p class="text-ink">{testimonial.name}</p>
+                  <p class="text-sm text-ink-muted mt-1">
+                    {testimonial.position}
+                  </p>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </section>
   )
 }
-
-<script>
-  import Glide from "@glidejs/glide";
-  import "@glidejs/glide/dist/css/glide.core.min.css";
-
-  new Glide(".glide", {
-    gap: 100,
-    type: "carousel",
-    perView: 2,
-    focusAt: "center",
-    autoplay: 5000,
-    animationDuration: 1000,
-    throttle: true,
-    breakpoints: { 600: { perView: 1 }, 1200: { perView: 2 } },
-  }).mount();
-</script>

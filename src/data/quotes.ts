@@ -2,6 +2,7 @@ export type Quote = {
   quote: string;
   name: string;
   position: string;
+  image?: string;
 };
 
 export const quotes: { items: Quote[] } = {
@@ -11,6 +12,7 @@ export const quotes: { items: Quote[] } = {
         "John is no novice at Coaching, Communication and Connecting.  He has spent over 30 years doing this.  He is very personable, insightful and resourceful. Spending time with him will prove invaluable for those who want to access the vault of his Wisdom, Experience and his ability to bring clarity.",
       name: "Ian Green",
       position: " CEO of Global Transformations",
+      image: "/img/testimonials/ian-green.jpg",
     },
     {
       quote:
@@ -18,12 +20,14 @@ export const quotes: { items: Quote[] } = {
       name: "Paul Benger",
       position:
         "Lead pastor, IKON Church and Leader of the Ground Level Network of Churches",
+      image: "/img/testimonials/paul-benger.jpg",
     },
     {
       quote:
         "I have known John for 40 years, and have observed him spend his whole life diligently caring for, encouraging and equipping those around him. I unreservedly recommend him as a conduit of wisdom, as a person, communicator and coach.",
       name: "Steve Mawston",
       position: "Pastor, SOUL Church UK",
+      image: "/img/testimonials/steve-mawston.jpg",
     },
     {
       quote:
@@ -31,6 +35,7 @@ export const quotes: { items: Quote[] } = {
       name: "Stephen Matthew",
       position:
         "Author, Speaker, Church Consultant and Principal of the Building Church Academy ",
+      image: "/img/testimonials/stephen-matthew.jpg",
     },
   ],
 };

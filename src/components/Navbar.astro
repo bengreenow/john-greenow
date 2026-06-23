@@ -6,44 +6,29 @@ interface Props {
 }
 
 const { path } = Astro.props;
-const stickyClass = path === "home" ? "lg:sticky" : "";
+const deferOnDesktop = path === "home";
 ---
 
-<div class={`${stickyClass} sticky top-0 z-50 bg-black w-full`}>
-  <nav
-    class="flex items-center justify-center lg:justify-between flex-row flex-nowrap px-6 py-3 lg:px-0 container mx-auto font-display"
-  >
-    <div class="flex items-center">
-      <div>
-        <a href="/">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="lg:w-60 w-32"
-            viewBox="0 0 372 117"
-          >
-            <text
-              id="John_Greenow"
-              data-name="John Greenow"
-              transform="translate(0 70)"
-              fill="#fff"
-              font-size="84"
-              font-family="Professor"
-              letter-spacing="-0.091em"
-            >
-              <tspan x="0" y="0">John Greenow</tspan>
-            </text>
-          </svg>
-        </a>
-      </div>
-    </div>
+<header
+  id="site-navbar"
+  class:list={[
+    "site-navbar sticky top-0 z-50 w-full bg-cream/95 backdrop-blur border-b border-border transition-[opacity,background-color,border-color] duration-500 ease-out",
+    { "is-visible": !deferOnDesktop },
+  ]}
+  data-nav-defer={deferOnDesktop ? "true" : undefined}
+>
+  <nav class="container flex items-center justify-between py-3 sm:py-4">
+    <a href="/" class="text-lg sm:text-xl md:text-2xl text-ink no-underline hover:text-ink-muted transition-colors">
+      John Greenow
+    </a>
 
     {
       navigation.items.length > 0 && (
-        <ul class="pb-3 pt-0 list-reset flex justify-end flex-1 items-center">
+        <ul class="flex items-center gap-1 md:gap-4 list-none m-0 p-0">
           {navigation.items.map((item) => (
-            <li class="nav__item mr-3">
+            <li>
               <a
-                class="inline-block text-white no-underline hover:text-indigo-500 text-xl font-bold py-2 px-6"
+                class="text-ink-muted hover:text-ink text-sm md:text-base no-underline px-2 md:px-3 py-2 transition-colors"
                 href={item.url}
               >
                 {item.text}
@@ -54,4 +39,56 @@ const stickyClass = path === "home" ? "lg:sticky" : "";
       )
     }
   </nav>
-</div>
+</header>
+
+{
+  deferOnDesktop && (
+    <script>
+      function setupDeferredNavbar() {
+        const navbar = document.getElementById("site-navbar");
+        const hero = document.getElementById("hero");
+        if (!navbar || navbar.dataset.navDefer !== "true" || !hero) return;
+
+        const lgQuery = window.matchMedia("(min-width: 1024px)");
+        let observer: IntersectionObserver | null = null;
+
+        function setVisible(visible: boolean) {
+          navbar!.classList.toggle("is-visible", visible);
+        }
+
+        function teardownObserver() {
+          if (observer) {
+            observer.disconnect();
+            observer = null;
+          }
+        }
+
+        function enable() {
+          if (!lgQuery.matches) {
+            teardownObserver();
+            setVisible(true);
+            return;
+          }
+
+          setVisible(false);
+
+          if (!observer) {
+            observer = new IntersectionObserver(
+              (entries) => {
+                setVisible(!entries[0]?.isIntersecting);
+              },
+              { threshold: 0 }
+            );
+            observer.observe(hero);
+          }
+        }
+
+        enable();
+        lgQuery.addEventListener("change", enable);
+      }
+
+      setupDeferredNavbar();
+      document.addEventListener("astro:page-load", setupDeferredNavbar);
+    </script>
+  )
+}

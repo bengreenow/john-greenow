@@ -1,0 +1,28 @@
+---
+import { newsletter } from "../data/newsletter";
+
+const actionUrl = `https://buttondown.com/api/emails/embed-subscribe/${newsletter.username}`;
+---
+
+<div
+  id="newsletter"
+  class="mt-10 max-w-md mx-auto lg:mx-0 opacity-0 transition duration-1000 delay-700"
+  data-replace="{ 'opacity-0': 'opacity-100' }"
+>
+  <p class="text-ink mb-1">Monthly letters for pastors and leaders</p>
+  <p class="text-sm text-ink-muted mb-4">
+    Encouragement and honest insight — once a month.
+  </p>
+
+  <form action={actionUrl} method="post" class="flex flex-col sm:flex-row gap-2">
+    <input
+      type="email"
+      name="email"
+      id="bd-email"
+      placeholder="your@email.com"
+      required
+      class="form-input flex-1"
+    />
+    <input type="submit" value="Subscribe" class="btn-primary sm:flex-shrink-0" />
+  </form>
+</div>

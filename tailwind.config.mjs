@@ -7,34 +7,34 @@ export default {
   theme: {
     container: {
       center: true,
+      padding: "1.5rem",
     },
     extend: {
+      colors: {
+        cream: "#FAF8F5",
+        "cream-dark": "#F0EBE3",
+        ink: "#2D2926",
+        "ink-muted": "#6B635B",
+        border: "#E5DFD6",
+      },
       typography: (theme) => ({
-        dark: {
+        DEFAULT: {
           css: {
-            color: theme("colors.gray.300"),
-            h1: { color: theme("colors.gray.300") },
-            h2: { color: theme("colors.gray.300") },
-            h3: { color: theme("colors.gray.300") },
-            h4: { color: theme("colors.gray.300") },
-            h5: { color: theme("colors.gray.300") },
-            h6: { color: theme("colors.gray.300") },
-            code: { color: theme("colors.gray.300") },
-            figcaption: { color: theme("colors.gray.500") },
+            color: theme("colors.ink"),
+            h1: { color: theme("colors.ink") },
+            h2: { color: theme("colors.ink") },
+            h3: { color: theme("colors.ink") },
+            h4: { color: theme("colors.ink") },
+            a: { color: theme("colors.ink") },
+            strong: { color: theme("colors.ink") },
           },
         },
       }),
-      animation: { slide: "slide-over 30s linear infinite" },
-      keyframes: {
-        "slide-over": {
-          "0%": { left: "100%", transform: "translate:(0,0)" },
-          "100%": { left: "-100%", transform: "translate:(-100%,0)" },
-        },
-      },
     },
     fontFamily: {
-      sans: ["Roboto", "sans-serif"],
-      display: ["Work Sans", "sans-serif"],
+      serif: ["var(--font-body)", "Georgia", "serif"],
+      display: ["var(--font-body)", "Georgia", "serif"],
+      sans: ["var(--font-body)", "Georgia", "serif"],
     },
   },
   plugins: [typography, aspectRatio],
