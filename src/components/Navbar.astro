@@ -1,34 +1,39 @@
 ---
 import { navigation } from "../data/navigation";
+import SignatureLogo from "./SignatureLogo.astro";
 
 interface Props {
   path?: string;
 }
 
 const { path } = Astro.props;
-const deferOnDesktop = path === "home";
+const deferOnHome = path === "home";
 ---
 
 <header
   id="site-navbar"
   class:list={[
-    "site-navbar sticky top-0 z-50 w-full bg-cream/95 backdrop-blur border-b border-border transition-[opacity,background-color,border-color] duration-500 ease-out",
-    { "is-visible": !deferOnDesktop },
+    "site-navbar top-0 z-50 w-full bg-cream/95 backdrop-blur border-b border-border transition-[opacity,background-color,border-color] duration-500 ease-out",
+    deferOnHome ? "fixed left-0 right-0" : "sticky",
+    { "is-visible": !deferOnHome },
   ]}
-  data-nav-defer={deferOnDesktop ? "true" : undefined}
+  data-nav-defer={deferOnHome ? "true" : undefined}
 >
-  <nav class="container flex items-center justify-between py-3 sm:py-4">
-    <a href="/" class="text-lg sm:text-xl md:text-2xl text-ink no-underline hover:text-ink-muted transition-colors">
-      John Greenow
+  <nav class="container flex items-center justify-between gap-3 py-2.5 sm:py-4">
+    <a
+      href="/"
+      class="min-w-0 flex-shrink text-ink no-underline hover:text-ink-muted transition-colors"
+    >
+      <SignatureLogo class="text-[1.65rem] sm:text-3xl md:text-4xl" />
     </a>
 
     {
       navigation.items.length > 0 && (
-        <ul class="flex items-center gap-1 md:gap-4 list-none m-0 p-0">
+        <ul class="flex flex-shrink-0 items-center gap-0 sm:gap-1 md:gap-4 list-none m-0 p-0">
           {navigation.items.map((item) => (
             <li>
               <a
-                class="text-ink-muted hover:text-ink text-sm md:text-base no-underline px-2 md:px-3 py-2 transition-colors"
+                class="text-ink-muted hover:text-ink text-xs sm:text-sm md:text-base no-underline px-1.5 sm:px-2 md:px-3 py-2 transition-colors whitespace-nowrap"
                 href={item.url}
               >
                 {item.text}
@@ -42,37 +47,44 @@ const deferOnDesktop = path === "home";
 </header>
 
 {
-  deferOnDesktop && (
+  deferOnHome && (
     <script>
       function setupDeferredNavbar() {
         const navbar = document.getElementById("site-navbar");
-        const hero = document.getElementById("hero");
-        if (!navbar || navbar.dataset.navDefer !== "true" || !hero) return;
+        if (!navbar || navbar.dataset.navDefer !== "true") return;
 
+        const hero = document.getElementById("hero");
+        const subscribeBtn = document.getElementById("newsletter-subscribe");
         const lgQuery = window.matchMedia("(min-width: 1024px)");
         let observer: IntersectionObserver | null = null;
+        let scrollHandler: (() => void) | null = null;
 
         function setVisible(visible: boolean) {
           navbar!.classList.toggle("is-visible", visible);
         }
 
-        function teardownObserver() {
+        function teardown() {
           if (observer) {
             observer.disconnect();
             observer = null;
           }
+          if (scrollHandler) {
+            window.removeEventListener("scroll", scrollHandler);
+            window.removeEventListener("resize", scrollHandler);
+            scrollHandler = null;
+          }
         }
 
         function enable() {
-          if (!lgQuery.matches) {
-            teardownObserver();
-            setVisible(true);
-            return;
-          }
+          teardown();
 
-          setVisible(false);
+          if (lgQuery.matches) {
+            if (!hero) {
+              setVisible(true);
+              return;
+            }
 
-          if (!observer) {
+            setVisible(false);
             observer = new IntersectionObserver(
               (entries) => {
                 setVisible(!entries[0]?.isIntersecting);
@@ -80,7 +92,23 @@ const deferOnDesktop = path === "home";
               { threshold: 0 }
             );
             observer.observe(hero);
+            return;
           }
+
+          if (!subscribeBtn) {
+            setVisible(true);
+            return;
+          }
+
+          const update = () => {
+            setVisible(subscribeBtn.getBoundingClientRect().bottom < 0);
+          };
+
+          setVisible(false);
+          update();
+          scrollHandler = update;
+          window.addEventListener("scroll", scrollHandler, { passive: true });
+          window.addEventListener("resize", scrollHandler);
         }
 
         enable();

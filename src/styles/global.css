@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.mjs";
 
 @layer base {
   :root {
@@ -94,13 +93,11 @@
     @apply opacity-100 translate-y-0;
   }
 
-  @media (min-width: 1024px) {
-    .site-navbar[data-nav-defer="true"]:not(.is-visible) {
-      opacity: 0;
-      pointer-events: none;
-      background-color: transparent;
-      border-color: transparent;
-      backdrop-filter: none;
-    }
+  .site-navbar[data-nav-defer="true"]:not(.is-visible) {
+    opacity: 0;
+    pointer-events: none;
+    background-color: transparent;
+    border-color: transparent;
+    backdrop-filter: none;
   }
 }
