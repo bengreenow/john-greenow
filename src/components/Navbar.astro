@@ -1,49 +1,39 @@
 ---
 import { navigation } from "../data/navigation";
+import SignatureLogo from "./SignatureLogo.astro";
 
 interface Props {
   path?: string;
 }
 
 const { path } = Astro.props;
-const stickyClass = path === "home" ? "lg:sticky" : "";
+const deferOnHome = path === "home";
 ---
 
-<div class={`${stickyClass} sticky top-0 z-50 bg-black w-full`}>
-  <nav
-    class="flex items-center justify-center lg:justify-between flex-row flex-nowrap px-6 py-3 lg:px-0 container mx-auto font-display"
-  >
-    <div class="flex items-center">
-      <div>
-        <a href="/">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="lg:w-60 w-32"
-            viewBox="0 0 372 117"
-          >
-            <text
-              id="John_Greenow"
-              data-name="John Greenow"
-              transform="translate(0 70)"
-              fill="#fff"
-              font-size="84"
-              font-family="Professor"
-              letter-spacing="-0.091em"
-            >
-              <tspan x="0" y="0">John Greenow</tspan>
-            </text>
-          </svg>
-        </a>
-      </div>
-    </div>
+<header
+  id="site-navbar"
+  class:list={[
+    "site-navbar top-0 z-50 w-full bg-cream/95 backdrop-blur border-b border-border transition-[opacity,background-color,border-color] duration-500 ease-out",
+    deferOnHome ? "fixed left-0 right-0" : "sticky",
+    { "is-visible": !deferOnHome },
+  ]}
+  data-nav-defer={deferOnHome ? "true" : undefined}
+>
+  <nav class="container flex items-center justify-between gap-3 py-2.5 sm:py-4">
+    <a
+      href="/"
+      class="min-w-0 flex-shrink text-ink no-underline hover:text-ink-muted transition-colors"
+    >
+      <SignatureLogo class="text-[1.65rem] sm:text-3xl md:text-4xl" />
+    </a>
 
     {
       navigation.items.length > 0 && (
-        <ul class="pb-3 pt-0 list-reset flex justify-end flex-1 items-center">
+        <ul class="flex flex-shrink-0 items-center gap-0 sm:gap-1 md:gap-4 list-none m-0 p-0">
           {navigation.items.map((item) => (
-            <li class="nav__item mr-3">
+            <li>
               <a
-                class="inline-block text-white no-underline hover:text-indigo-500 text-xl font-bold py-2 px-6"
+                class="text-ink-muted hover:text-ink text-xs sm:text-sm md:text-base no-underline px-1.5 sm:px-2 md:px-3 py-2 transition-colors whitespace-nowrap"
                 href={item.url}
               >
                 {item.text}
@@ -54,4 +44,79 @@ const stickyClass = path === "home" ? "lg:sticky" : "";
       )
     }
   </nav>
-</div>
+</header>
+
+{
+  deferOnHome && (
+    <script>
+      function setupDeferredNavbar() {
+        const navbar = document.getElementById("site-navbar");
+        if (!navbar || navbar.dataset.navDefer !== "true") return;
+
+        const hero = document.getElementById("hero");
+        const subscribeBtn = document.getElementById("newsletter-subscribe");
+        const lgQuery = window.matchMedia("(min-width: 1024px)");
+        let observer: IntersectionObserver | null = null;
+        let scrollHandler: (() => void) | null = null;
+
+        function setVisible(visible: boolean) {
+          navbar!.classList.toggle("is-visible", visible);
+        }
+
+        function teardown() {
+          if (observer) {
+            observer.disconnect();
+            observer = null;
+          }
+          if (scrollHandler) {
+            window.removeEventListener("scroll", scrollHandler);
+            window.removeEventListener("resize", scrollHandler);
+            scrollHandler = null;
+          }
+        }
+
+        function enable() {
+          teardown();
+
+          if (lgQuery.matches) {
+            if (!hero) {
+              setVisible(true);
+              return;
+            }
+
+            setVisible(false);
+            observer = new IntersectionObserver(
+              (entries) => {
+                setVisible(!entries[0]?.isIntersecting);
+              },
+              { threshold: 0 }
+            );
+            observer.observe(hero);
+            return;
+          }
+
+          if (!subscribeBtn) {
+            setVisible(true);
+            return;
+          }
+
+          const update = () => {
+            setVisible(subscribeBtn.getBoundingClientRect().bottom < 0);
+          };
+
+          setVisible(false);
+          update();
+          scrollHandler = update;
+          window.addEventListener("scroll", scrollHandler, { passive: true });
+          window.addEventListener("resize", scrollHandler);
+        }
+
+        enable();
+        lgQuery.addEventListener("change", enable);
+      }
+
+      setupDeferredNavbar();
+      document.addEventListener("astro:page-load", setupDeferredNavbar);
+    </script>
+  )
+}

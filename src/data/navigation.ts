@@ -1,3 +1,6 @@
 export const navigation = {
-  items: [{ text: "Contact", url: "#contact" }],
+  items: [
+    { text: "Newsletter", url: "#newsletter" },
+    { text: "Work with me", url: "#work-with-me" },
+  ],
 };

@@ -1,0 +1,44 @@
+<section id="work-with-me" class="container py-10 sm:py-16 md:py-24" data-fade>
+  <div class="max-w-2xl">
+    <h2 class="section-heading mb-4">Work with me</h2>
+    <p class="text-lg text-ink-muted leading-relaxed mb-6">
+      One-to-one personal coaching for pastors and ministry leaders. Enquiries
+      are reviewed personally, and we'll be in touch if it's a good fit.
+    </p>
+
+    <form
+      id="contact-form"
+      class="space-y-4"
+      method="POST"
+      name="contact"
+      data-netlify="true"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+
+      <div>
+        <label for="name" class="block text-ink mb-1">Name</label>
+        <input type="text" name="name" id="name" required class="form-input" />
+      </div>
+
+      <div>
+        <label for="email" class="block text-ink mb-1">Email</label>
+        <input type="email" name="email" id="email" required class="form-input" />
+      </div>
+
+      <div>
+        <label for="message" class="block text-ink mb-1">Message</label>
+        <textarea
+          name="message"
+          id="message"
+          rows="5"
+          class="form-input resize-y"
+          placeholder="Tell me a little about where you are and what you're looking for."
+        ></textarea>
+      </div>
+
+      <div>
+        <input type="submit" value="Send enquiry" class="btn-primary w-full sm:w-auto" />
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,56 +1,103 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.mjs";
 
-h1,
-h2,
-h3 {
-  @apply font-display;
+@layer base {
+  :root {
+    --font-body: "Crimson Pro", Georgia, serif;
+    --color-cream: #faf8f5;
+    --color-cream-dark: #f0ebe3;
+    --color-ink: #2d2926;
+    --color-ink-muted: #6b635b;
+    --color-border: #e5dfd6;
+    --grid-line: rgb(45 41 38 / 0.05);
+    --grid-size: 2rem;
+  }
+
+  html {
+    @apply text-ink antialiased;
+    font-family: var(--font-body);
+  }
+
+  body {
+    min-height: 100vh;
+    @apply flex flex-col;
+    background-color: var(--color-cream);
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+  }
+
+  footer {
+    margin-top: auto;
+  }
+
+  .signature-logo {
+    font-family: "professor", sans-serif;
+    letter-spacing: -0.091em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply text-ink;
+    font-family: inherit;
+  }
+
+  a {
+    @apply text-ink transition-colors duration-150;
+  }
+
+  a:hover {
+    @apply text-ink-muted;
+  }
+
+  ::selection {
+    background-color: rgb(229 223 214 / 0.8);
+    color: var(--color-ink);
+  }
 }
 
-.big-text {
-  @apply xl:text-8xl lg:text-6xl md:text-6xl sm:text-5xl text-4xl;
-}
+@layer components {
+  .section-heading {
+    @apply text-3xl md:text-4xl text-ink leading-tight;
+  }
 
-.w-double {
-  width: 200%;
-}
+  .btn-primary {
+    @apply inline-block px-6 py-3 bg-ink text-cream cursor-pointer
+      border border-ink transition-colors duration-150
+      focus:outline-none focus:ring-1 focus:ring-ink focus:ring-offset-2 focus:ring-offset-cream;
+  }
 
-.display::after {
-  content: "";
-  display: block;
-  position: absoulte;
-  width: 100%;
-  left: 200px;
-  height: 2px;
-  @apply bg-purple-500;
-}
+  .btn-primary:hover {
+    @apply bg-ink-muted border-ink-muted;
+  }
 
-a {
-  @apply text-purple-500;
-  cursor: pointer;
-  transition: color 0.2s;
-}
+  .form-input {
+    @apply w-full px-4 py-3 bg-cream border border-border
+      text-ink placeholder:text-ink-muted
+      focus:outline-none focus:border-ink;
+  }
 
-a:hover {
-  @apply text-purple-300;
-  transition: color 0.2s;
-}
+  .flat-panel {
+    @apply bg-cream-dark border border-border p-6;
+  }
 
-html {
-  @apply text-white bg-black;
-}
+  .fade-in-scroll {
+    @apply opacity-0 translate-y-3 transition-all duration-700 ease-out;
+  }
 
-body {
-  min-height: 100vh;
-  @apply flex flex-col;
-}
+  .fade-in-scroll.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
 
-footer {
-  margin-top: auto;
-}
-
-body :not(pre) > code[class*="language-"],
-body pre[class*="language-"] {
-  @apply bg-gray-800;
+  .site-navbar[data-nav-defer="true"]:not(.is-visible) {
+    opacity: 0;
+    pointer-events: none;
+    background-color: transparent;
+    border-color: transparent;
+    backdrop-filter: none;
+  }
 }
